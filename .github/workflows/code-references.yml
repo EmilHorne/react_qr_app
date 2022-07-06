@@ -2,7 +2,7 @@ on:
   push:
     branches-ignore:
       - 'gh-pages/**'
-  pull-request:
+  pull_request:
     types: [opened, reopened, review_requested]
 
 name: Find LaunchDarkly flag code references
