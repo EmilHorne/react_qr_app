@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react_qr_app/static/css/main.db33c156.css",
-    "main.js": "/react_qr_app/static/js/main.9ebe6530.js",
+    "main.js": "/react_qr_app/static/js/main.29b938ff.js",
     "static/js/496.4eea1c80.chunk.js": "/react_qr_app/static/js/496.4eea1c80.chunk.js",
     "static/media/toggle.png": "/react_qr_app/static/media/toggle.1d752285128b052f17fb.png",
     "static/media/toggle_old.png": "/react_qr_app/static/media/toggle_old.09554e178415a8bfc0f6.png",
@@ -10,11 +10,11 @@
     "index.html": "/react_qr_app/index.html",
     "static/media/heart.svg": "/react_qr_app/static/media/heart.448e45f9ab7caffa1ed94a1ca992ca56.svg",
     "main.db33c156.css.map": "/react_qr_app/static/css/main.db33c156.css.map",
-    "main.9ebe6530.js.map": "/react_qr_app/static/js/main.9ebe6530.js.map",
+    "main.29b938ff.js.map": "/react_qr_app/static/js/main.29b938ff.js.map",
     "496.4eea1c80.chunk.js.map": "/react_qr_app/static/js/496.4eea1c80.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.db33c156.css",
-    "static/js/main.9ebe6530.js"
+    "static/js/main.29b938ff.js"
   ]
 }
