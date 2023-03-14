@@ -1,27 +1,37 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import QRCode from "./components/qrCode";
 import { useFlags } from "launchdarkly-react-client-sdk";
-import HeaderLDLogo from "./components/headerLogo";
+
+//import Toggle from "./components/toggle";
+
+//import { addResponseMessage } from 'react-chat-widget';
+
 import Heart from "./components/heart";
 import CustomerLogo from "./components/customerLogo";
-import Toggle from "./components/toggle";
+import HeaderLDLogo from "./components/headerLogo";
+import SelfHealingChart from "./components/selfHealingChart";
+import QRCode from "./components/qrCode";
+import RoleButtons from "./components/roleButtons";
+import InputBox from "./components/inputBox";
+import Astronaut from "./components/astronaut";
+import Chatbot from "./components/chatbot";
 
 function App() {
   const [headerStyle, setHeaderStyle] = useState("gray-app-header");
-  const { reactBackgroundColor } = useFlags();
+  const { configBackgroundColor } = useFlags();
+  //const ldClient = useLDClient();
 
   useEffect(() => {
     setHeaderStyle("gray-app-header");
     const updateBackGroundColor = () => {
       // Sets the className to "purple-app-header", "blue-app-header", etc.
-      const headerStyle = reactBackgroundColor + "-app-header";
+      const headerStyle = configBackgroundColor + "-app-header";
       setHeaderStyle(headerStyle);
 
-      return reactBackgroundColor;
+      return configBackgroundColor;
     };
     updateBackGroundColor();
-  }, [reactBackgroundColor]);
+  }, [configBackgroundColor]);
 
   return (
     <div className={headerStyle}>
@@ -31,9 +41,15 @@ function App() {
       <div className={headerStyle}>
         <Heart />
         <CustomerLogo />
+        <SelfHealingChart />
         <QRCode />
+        <RoleButtons />
+        <InputBox />
         <br />
-        <Toggle />
+        <Astronaut />
+        <div className="chatbot">
+          <Chatbot />
+        </div>
       </div>
     </div>
   );

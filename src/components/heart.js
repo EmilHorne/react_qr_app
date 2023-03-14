@@ -2,7 +2,7 @@ import { withLDConsumer } from "launchdarkly-react-client-sdk";
 import heart from "./../images/heart.svg";
 
 const showHeart = ({ flags, ldClient /*, ...otherProps */ }) => {
-  let showFeature = ldClient.variation("reactShowHeart");
+  let showFeature = ldClient.variation("release-heart");
 
   return showFeature ? (
   <div>

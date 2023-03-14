@@ -1,3 +1,21 @@
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button2 {background-color: #008CBA;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */ 
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+.button5 {background-color: #555555;} /* Black */
+
 .App {
   text-align: center;
 }
@@ -32,9 +50,24 @@
   background-color: #FFFFFF;
 }
 
+.self-healer {
+  font-size: 10vw;
+  color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-.toggle-logo {
-  height: 400px;
+.chart {
+  font-size: 10vw;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.astronaut-logo {
+  height: 300px;
   pointer-events: none;
 }
 
@@ -59,7 +92,7 @@
 }
 
 .gray-app-header {
-  background-color: #dedede;
+  background-color: #E6E6E6;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -70,7 +103,7 @@
 }
 
 .purple-app-header {
-  background-color: #9a31b1;
+  background-color: #A34FDE;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -81,7 +114,7 @@
 }
 
 .blue-app-header {
-  background-color: #1800b7;
+  background-color: #405BFF;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -93,6 +126,50 @@
 
 .red-app-header {
   background-color: #840000;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.green-app-header {
+  background-color: #008400;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.yellow-app-header {
+  background-color: #d8e60f;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.pink-app-header {
+  background-color: #e60fb4;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.black-app-header {
+  background-color: #000000;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
