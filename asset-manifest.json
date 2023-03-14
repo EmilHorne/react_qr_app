@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/react_qr_app/static/css/main.b2a86d66.chunk.css",
-    "main.js": "/react_qr_app/static/js/main.8e4aec17.chunk.js",
-    "main.js.map": "/react_qr_app/static/js/main.8e4aec17.chunk.js.map",
-    "runtime-main.js": "/react_qr_app/static/js/runtime-main.2889faf3.js",
-    "runtime-main.js.map": "/react_qr_app/static/js/runtime-main.2889faf3.js.map",
+    "main.css": "/react_qr_app/static/css/main.10d0813d.chunk.css",
+    "main.js": "/react_qr_app/static/js/main.557114af.chunk.js",
+    "main.js.map": "/react_qr_app/static/js/main.557114af.chunk.js.map",
+    "runtime-main.js": "/react_qr_app/static/js/runtime-main.0253bc6e.js",
+    "runtime-main.js.map": "/react_qr_app/static/js/runtime-main.0253bc6e.js.map",
     "static/css/2.3995669a.chunk.css": "/react_qr_app/static/css/2.3995669a.chunk.css",
-    "static/js/2.0fe0cf39.chunk.js": "/react_qr_app/static/js/2.0fe0cf39.chunk.js",
-    "static/js/2.0fe0cf39.chunk.js.map": "/react_qr_app/static/js/2.0fe0cf39.chunk.js.map",
-    "static/js/3.f9ae5aa8.chunk.js": "/react_qr_app/static/js/3.f9ae5aa8.chunk.js",
-    "static/js/3.f9ae5aa8.chunk.js.map": "/react_qr_app/static/js/3.f9ae5aa8.chunk.js.map",
+    "static/js/2.7f5b0036.chunk.js": "/react_qr_app/static/js/2.7f5b0036.chunk.js",
+    "static/js/2.7f5b0036.chunk.js.map": "/react_qr_app/static/js/2.7f5b0036.chunk.js.map",
+    "static/js/3.4a0220fd.chunk.js": "/react_qr_app/static/js/3.4a0220fd.chunk.js",
+    "static/js/3.4a0220fd.chunk.js.map": "/react_qr_app/static/js/3.4a0220fd.chunk.js.map",
     "index.html": "/react_qr_app/index.html",
     "static/css/2.3995669a.chunk.css.map": "/react_qr_app/static/css/2.3995669a.chunk.css.map",
-    "static/css/main.b2a86d66.chunk.css.map": "/react_qr_app/static/css/main.b2a86d66.chunk.css.map",
-    "static/js/2.0fe0cf39.chunk.js.LICENSE.txt": "/react_qr_app/static/js/2.0fe0cf39.chunk.js.LICENSE.txt",
+    "static/css/main.10d0813d.chunk.css.map": "/react_qr_app/static/css/main.10d0813d.chunk.css.map",
+    "static/js/2.7f5b0036.chunk.js.LICENSE.txt": "/react_qr_app/static/js/2.7f5b0036.chunk.js.LICENSE.txt",
     "static/media/astronaut.1d752285.png": "/react_qr_app/static/media/astronaut.1d752285.png",
     "static/media/astronaut_old.09554e17.png": "/react_qr_app/static/media/astronaut_old.09554e17.png",
     "static/media/heart.3d7839e5.svg": "/react_qr_app/static/media/heart.3d7839e5.svg",
@@ -21,10 +21,10 @@
     "static/media/ld_logo_white_old.a7492e3d.png": "/react_qr_app/static/media/ld_logo_white_old.a7492e3d.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.2889faf3.js",
+    "static/js/runtime-main.0253bc6e.js",
     "static/css/2.3995669a.chunk.css",
-    "static/js/2.0fe0cf39.chunk.js",
-    "static/css/main.b2a86d66.chunk.css",
-    "static/js/main.8e4aec17.chunk.js"
+    "static/js/2.7f5b0036.chunk.js",
+    "static/css/main.10d0813d.chunk.css",
+    "static/js/main.557114af.chunk.js"
   ]
 }
