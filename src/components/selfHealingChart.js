@@ -1,7 +1,8 @@
-import { withLDConsumer } from "launchdarkly-react-client-sdk";
+import { withLDConsumer, useLDClient } from "launchdarkly-react-client-sdk";
 import axios from 'axios';
 import { VictoryChart, VictoryLine, VictoryLabel, VictoryAxis, VictoryArea } from 'victory';
 import React, { useEffect, useState } from 'react';
+import * as JSLDClient from 'launchdarkly-js-client-sdk';
 
 // Flag trigger address used to killswitch, and put data back to stable state
 const webhook_url = "https://app.launchdarkly.com/webhook/triggers/63fe051d0b4cf513525ca0ae/d35c1952-d625-4a03-b188-693e657e9ab4"
@@ -12,9 +13,64 @@ async function sendRequest(url) {
   return response.data.answer;
 }
 
+let global_ld_client = null;
+
 // Core component
 function SelfHealingChart ({ flags, ldClient }) {
-  const label = ldClient.variation("config-chart-label", "Error Rate");
+    useLDClient()
+  const [label, setLabel] = useState('Problem Rate');
+
+  // clientSideID points to your LaunchDarkly global project
+  const clientSideID = '644a987a0beee912c3717bbb';
+
+  // Set up the context properties for the global project connection (copy from local context)
+  let global_context = ldClient.getContext();
+  if (global_context.kind === "multi") {
+    // add my global stuff to the multi-context as a separate kind (e.g., global)
+  }
+  else
+  {
+    // the react SDK is not already using a multi context so construct one
+    const multiContext = {
+      kind: "multi",
+      localContext: global_context,
+      globalContext:
+        {
+          kind: "global",
+          key: // mparticle ID
+          brand: // get the URL
+          // ...
+        }
+    }
+  }
+
+  
+
+  // Set options so regardless of SDK version running this code, it will work with experiments
+  const options = {
+    allowFrequentDuplicateEvents: true, // prevents data loss in some scenarios
+    sendEventsOnlyForVariation: true, // fixes an issue in older React SDKs
+    evaluationReasons: true
+  };
+
+  // Connect to LaunchDarkly - here we are making a dedicated connection just for global experiments; this doesn't interfere/interact with brand-specific connections already implemented
+  if (global_ld_client === null) {
+    global_ld_client = JSLDClient.initialize(clientSideID, global_context, options);
+  }
+  global_ld_client.waitForInitialization().then(() => {
+    let eval_result = ldClient.variationDetail("config-chart-label", "Local Error Rate");
+    //alert(JSON.stringify(eval_result));
+    if (eval_result.reason.kind === "ERROR" || eval_result.reason.kind === "OFF" || eval_result.reason.kind === "PREREQUISITE_FAILED") {
+      setLabel(global_ld_client.variation("config-chart-label", "Global Error Rate"));
+    }
+    else
+    {
+      setLabel(eval_result.value);
+    }  
+    // initialization succeeded, flag values are now available
+  }).catch(err => {
+    // initialization failed
+  });
 
   // Chart data controlled by a flag
   const defaultValue = [
@@ -37,7 +93,7 @@ function SelfHealingChart ({ flags, ldClient }) {
   ]
 
   const [figures, setFigures] = useState(defaultValue);
-
+ 
   // Static red chart threshold line data
   const threshold = 60
 
@@ -79,6 +135,15 @@ function SelfHealingChart ({ flags, ldClient }) {
 
   // Function used to update 'figures' with new data
   function plot() {
+    let eval_result = ldClient.variationDetail("config-chart-label", "Local Error Rate");
+    //alert(JSON.stringify(eval_result));
+    if (eval_result.reason.kind === "ERROR" || eval_result.reason.kind === "OFF" || eval_result.reason.kind === "PREREQUISITE_FAILED") {
+      setLabel(global_ld_client.variation("config-chart-label", "Global Error Rate"));
+    }
+    else
+    {
+      setLabel(eval_result.value);
+    }  
     const newPlotData = figures;
     const flagValue = ldClient.variation("release-self-healing-feature", false);
     const lastItem = newPlotData.slice(-1)

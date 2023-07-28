@@ -8,7 +8,7 @@ import { asyncWithLDProvider } from "launchdarkly-react-client-sdk";
 import { deviceType, osName } from "react-device-detect";
 //import getUserId from "./util/getUserId";
 import getExpList from "./util/getExpList";
-import AWS from 'aws-sdk';
+import AWS, { MediaPackageVod } from 'aws-sdk';
 
 
 const CLIENTKEY = "6284382d30dae514fe1c974a"; // react-qr-demo / Production
@@ -18,6 +18,7 @@ const CLIENTKEY = "6284382d30dae514fe1c974a"; // react-qr-demo / Production
 (async () => {
   const userContext = {
     kind: "user",
+    anonymous: true,
     key: ["Amy", "Ben", "Cal", "Dan", "Eli"][Math.floor(Math.random() * 5)],
     email: "abc@example.org",
     role: "Build",
@@ -46,12 +47,30 @@ const CLIENTKEY = "6284382d30dae514fe1c974a"; // react-qr-demo / Production
     deviceType: deviceType,
     operatingSystem: osName,
   }
+  const siteContext = {
+    kind: "site",
+    key: "local"
+  }
   const multiContext = {
     kind: "multi",
     user: userContext,
     device: deviceContext,
     organization: organizationContext,
+    site: siteContext
   }
+  // const anonymousContext = {
+  //   kind: "guest",
+  //   key: 12345 // anonymous mpid
+  // }
+  // const userContext = {
+  //   kind: "user",
+  //   key: 12345 // logged-in mpid
+  // }
+  // const multiContext = {
+  //   kind: "multi",
+  //   anonymousContext: anonymousContext,
+  //   userContext: userContext
+  // }
   const LDProvider = await asyncWithLDProvider({
     clientSideID: CLIENTKEY,
     context: multiContext,
@@ -70,26 +89,26 @@ const CLIENTKEY = "6284382d30dae514fe1c974a"; // react-qr-demo / Production
     //   secretAccessKey: 'AWSAccessKeySecret', 
     //   region: 'eu-west-1',
     // });
-    AWS.config.update({region: 'us-east-1'});
-    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-      IdentityPoolId: 'us-east-1:157e0f20-91f3-4a7a-b371-3b4eadb258f4',
-    });
+    //AWS.config.update({region: 'us-east-1'});
+    //AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+    //  IdentityPoolId: 'us-east-1:157e0f20-91f3-4a7a-b371-3b4eadb258f4',
+    //});
+    //
+    //   AWS.config.getCredentials(function(err) {
+    //     if (err) {
+    //       console.log(err.stack);
+    //       // credentials not loaded
+    //       // // Initialize the Amazon Cognito credentials provider
+    //     } else {
+    //       //console.log("Access key:", AWS.config.credentials.accessKeyId);
+    //     }
+    //   });
+    // if (window.lambdaResponse === undefined) {
+    //   window.lambdaResponse = await new AWS.Lambda().invoke({'FunctionName': 'BackendFunc'}).promise();
+    // }
 
-      AWS.config.getCredentials(function(err) {
-        if (err) {
-          console.log(err.stack);
-          // credentials not loaded
-          // // Initialize the Amazon Cognito credentials provider
-        } else {
-          //console.log("Access key:", AWS.config.credentials.accessKeyId);
-        }
-      });
-    if (window.lambdaResponse === undefined) {
-      window.lambdaResponse = await new AWS.Lambda().invoke({'FunctionName': 'BackendFunc'}).promise();
-    }
-
-    await new Promise(r => setTimeout(r, 5));
-    console.log(window.lambdaResponse);
+    // await new Promise(r => setTimeout(r, 5));
+    // console.log(window.lambdaResponse);
 
     // React 18
     // const root = ReactDOMClient.createRoot(document.getElementById("root"));

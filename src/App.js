@@ -13,6 +13,7 @@ import SelfHealingChart from "./components/selfHealingChart";
 import QRCode from "./components/qrCode";
 import RoleButtons from "./components/roleButtons";
 import InputBox from "./components/inputBox";
+import Experiment from "./components/experiment";
 import Astronaut from "./components/astronaut";
 import Chatbot from "./components/chatbot";
 

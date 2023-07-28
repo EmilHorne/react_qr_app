@@ -8,6 +8,8 @@ const InputBox = ({ flags, ldClient /*, ...otherProps */ }) => {
     constructor(props) {
       super(props);
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleSubmitSite = this.handleSubmitSite.bind(this);
+
       this.input = React.createRef();
     };
 
@@ -47,6 +49,21 @@ const InputBox = ({ flags, ldClient /*, ...otherProps */ }) => {
       //);
     };
 
+    async handleSubmitSite(event) {
+      event.preventDefault();
+      //alert('You entered: ' + this.input.current.value)
+
+      //const ldClient = useLDClient();
+      let context = ldClient.getContext();
+      //alert (JSON.stringify(context));
+      //context.site.key = this.input.current.value;
+      //ldClient.identify(context);
+      ldClient.track("Engagement", null, 1);
+      //.then(
+      //alert('You entered: ' + this.input.current.value + ' -- ' + JSON.stringify(context))
+      //);
+    };
+
     render() {
       let showFeature = ldClient.variation("experimental-ui-change", "control");
       let role = ldClient.variation("role", "dev");
@@ -59,6 +76,14 @@ const InputBox = ({ flags, ldClient /*, ...otherProps */ }) => {
           </label>
           <input type="submit" value="Submit" />
         </form>
+      ) : showFeature === "variant C" ? (
+        <form onSubmit={this.handleSubmitSite}>
+        <label>
+          Enter site name:
+          <input type="text" ref={this.input} minlength="2" maxlength="12" size="7" />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
       ) : (
         <div/>
       );
