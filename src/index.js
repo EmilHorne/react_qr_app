@@ -11,7 +11,8 @@ import getExpList from "./util/getExpList";
 import AWS, { MediaPackageVod } from 'aws-sdk';
 
 
-const CLIENTKEY = "6284382d30dae514fe1c974a"; // react-qr-demo / Production
+//const CLIENTKEY = "6284382d30dae514fe1c974a"; // react-qr-demo / Production
+const CLIENTKEY = "6808dca4437d3a08b1c87f48"; // sandbox / dev
 
 //let id = getUserId();
 
