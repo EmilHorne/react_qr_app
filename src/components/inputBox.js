@@ -28,7 +28,7 @@ const InputBox = ({ flags, ldClient /*, ...otherProps */ }) => {
             method: 'GET',
             headers: {
               "LD-API-Version": "beta",
-              "Authorization": 'api-6ad7e0d6-ab58-4a6b-8ce3-30dce11ad14f'
+              "Authorization": 'INSERT-TOKEN-HERE'
             }
           }
         );
